@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TradeAssembly caption="">
+    <DataBasket/>
+    <DataRule/>
+    <CanEditSdb value="false"/>
+    <MainProcess path="/AppFramework_2013B/trade/test/bug0041/TestControls.mpt">
+        <Node caption="" id="3" type="UIStep">
+            <InArg name="path"/>
+            <InArg name="target"/>
+            <InArg name="targetArgMap"/>
+            <InArg name="mapping"/>
+            <Mappings path=""/>
+        </Node>
+    </MainProcess>
+    <InternalVars>
+        <Var description="描述" name="test" type="string"/>
+        <Var description="描述" name="aa" type="类型"/>
+    </InternalVars>
+</TradeAssembly>

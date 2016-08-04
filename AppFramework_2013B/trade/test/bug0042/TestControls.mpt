@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProcessTemplate caption="测试自定义控件" idCount="12" start="11">
+    <SedaStep id="11">
+        <Entry id="xy_location" value="159,147"/>
+        <Entry id="xy_size" value="180,80"/>
+        <Out caption="通过" id="1" name="pass" next="4" targetTerminal="正常端口"/>
+        <Out caption="不通过" id="2" name="block" next="12" targetTerminal="正常端口"/>
+        <Exception name="" next="" targetTerminal=""/>
+    </SedaStep>
+    <LogicStep id="12">
+        <Entry id="xy_location" value="329,305"/>
+        <Entry id="xy_size" value="180,80"/>
+        <Out caption="正常出口" id="1" name="正常出口" next="1001" targetTerminal="正常出口"/>
+        <Exception name="" next="" targetTerminal=""/>
+    </LogicStep>
+    <LogicStep id="4">
+        <Entry id="xy_location" value="49,306"/>
+        <Entry id="xy_size" value="180,80"/>
+        <Out caption="正常出口" id="1" name="正常出口" next="3" targetTerminal="正常端口"/>
+        <Exception name="" next="" targetTerminal=""/>
+    </LogicStep>
+    <UIStep id="3">
+        <Entry id="xy_location" value="49,508"/>
+        <Entry id="xy_size" value="180,80"/>
+        <Out caption="正常出口" id="1" name="正常出口" next="1001" targetTerminal="正常出口"/>
+        <Exception name="" next="" targetTerminal=""/>
+    </UIStep>
+    <EndStep id="1000">
+        <Entry id="xy_location" value="214,704"/>
+        <Entry id="xy_size" value="180,80"/>
+        <In caption="正常出口" id="1" name="正常出口"/>
+    </EndStep>
+    <DataBasket/>
+    <InternalVars>
+        <Var description="描述" name="test" type="string"/>
+    </InternalVars>
+    <End caption="正常出口" id="1001" name="正常出口"/>
+</MainProcessTemplate>
