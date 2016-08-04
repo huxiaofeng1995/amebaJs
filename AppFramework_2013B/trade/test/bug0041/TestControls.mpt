@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProcessTemplate caption="测试自定义控件" idCount="3" start="2">
+    <LFC caption="lfc" id="2" path="AppFramework_2013B/trade/test/bug0041/Lfc1.lfc">
+        <Mappings path="AppFramework_2013B/trade/test/bug0041/TestConrtols.mpt"/>
+        <Entry id="xy_location" value="49,204"/>
+        <Entry id="xy_size" value="180,80"/>
+        <Out caption="正常出口" id="1" name="正常出口" next="3" targetTerminal="正常端口"/>
+        <Exception name="" next="" targetTerminal=""/>
+    </LFC>
+    <UIStep id="3">
+        <Entry id="xy_location" value="49,385"/>
+        <Entry id="xy_size" value="180,80"/>
+        <Out caption="正常出口" id="1" name="正常出口" next="1001" targetTerminal="正常出口"/>
+        <Exception name="" next="" targetTerminal=""/>
+    </UIStep>
+    <EndStep id="1000">
+        <Entry id="xy_location" value="50,596"/>
+        <Entry id="xy_size" value="180,80"/>
+        <In caption="正常出口" id="1" name="正常出口"/>
+    </EndStep>
+    <DataBasket/>
+    <InternalVars>
+        <Var description="描述" name="test" type="string"/>
+    </InternalVars>
+    <End caption="正常出口" id="1001" name="正常出口"/>
+</MainProcessTemplate>

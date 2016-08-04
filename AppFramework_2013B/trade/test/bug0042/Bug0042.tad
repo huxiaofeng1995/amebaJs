@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TradeAssembly caption="">
+    <DataBasket/>
+    <DataRule/>
+    <CanEditSdb value="false"/>
+    <MainProcess path="/AppFramework_2013B/trade/test/bug0042/TestControls.mpt">
+        <Node caption="" id="12" type="LogicStep">
+            <InArg name="path">"/AppFramework_2013B/trade/test/bug0042/Lfc2.lfc"</InArg>
+            <InArg name="inArgMap"/>
+            <InArg name="outArgMap"/>
+            <InArg name="mapping"/>
+            <Mappings path="/AppFramework_2013B/trade/test/bug0042/Lfc2.lfc"/>
+        </Node>
+        <Node caption="" id="4" type="LogicStep">
+            <InArg name="path">"/AppFramework_2013B/trade/test/bug0042/Lfc1.lfc"</InArg>
+            <InArg name="inArgMap"/>
+            <InArg name="outArgMap"/>
+            <InArg name="mapping"/>
+            <Mappings path="/AppFramework_2013B/trade/test/bug0042/Lfc1.lfc"/>
+        </Node>
+        <Node caption="" id="3" type="UIStep">
+            <InArg name="path">"/AppFramework_2013B/trade/test/bug0042/Abf.abf"</InArg>
+            <InArg name="target"/>
+            <InArg name="targetArgMap"/>
+            <InArg name="mapping"/>
+            <Mappings path="/AppFramework_2013B/trade/test/bug0042/Abf.abf"/>
+        </Node>
+    </MainProcess>
+    <InternalVars>
+        <Var description="描述" name="test" type="string"/>
+    </InternalVars>
+</TradeAssembly>
