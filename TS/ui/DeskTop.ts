@@ -12,6 +12,10 @@ import {CommandHandlerExecutor} from "./CommandHandlerExecutor";
 import {Tad} from "./Tad";
 import {EventHub} from "../runtime/EventHub";
 import {EngineEvent}from "../const/EngineEvent";
+import {ServiceObj} from "../const/ServiceObj";
+import {ResourceDocumentTable}from "../resource/ResourceDocumentTable";
+import {DefaultExpressionEngine} from "../engine/expression/DefaultExpressionEngine";
+import {ProcessInstanceFactory} from "../engine/process/ProcessInstanceFactory";
 
 class DefaultPanelFactory implements IPanelCompositeFactory {
     getPanelComposite():any {
@@ -39,7 +43,7 @@ export class DeskTop {
         this.panelCompositeFactoryRegistry.put(DeskTop.PANEL_FACTORY_DEFAULT,defaultPanelFactory);
         // 2.注册事件模块
         let commandExecutor = new CommandHandlerExecutor();
-        this.getContext().set(ServiceObj.CommandHandlerExecutor,commandExecutor);
+        Context.baseContext.set(ServiceObj.CommandHandlerExecutor,commandExecutor);
         EngineEventManager.init(commandExecutor.handleEvent);
         // 3.资源
         var resourceDocumentTable = new ResourceDocumentTable();
@@ -54,18 +58,18 @@ export class DeskTop {
         // 1.启动tad
         let id:string = "Tad_"+GUID();
         let defaultTad = new Tad(id,this);
-        defaultTad.start();
+        // defaultTad.start();
     }
 }
-// let desktop = new DeskTop();
-// desktop.init("");
-//
-// let callback = function () {
-//     alert("callback");
-// }
-// let data = {
-//   param:{"a":"b"},
-//   callback:callback,
-//   executor:desktop.getContext().get("CommandHandlerExecutor")
-// };
-// EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);
+let desktop = new DeskTop();
+desktop.init("");
+
+let callback = function () {
+    alert("callback");
+}
+let data = {
+  param:{"a":"b"},
+  callback:callback,
+  context:Context.baseContext
+};
+EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);

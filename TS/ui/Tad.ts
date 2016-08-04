@@ -4,6 +4,8 @@
 import {TadPanel} from "./TadPanel";
 import {DeskTop} from "./DeskTop";
 import {Context} from "../runtime/Context";
+import GUID from "../lib/GUID";
+import {ServiceObj}from　"../const/ServiceObj";
 
 export class Tad {
 
@@ -35,9 +37,9 @@ export class Tad {
 
         let pif = this.tadContext.get(ServiceObj.ProcessInstanceFactory);
 
-        // var tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
+        var tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
         // var tadPath = "business/commonComponent/ClearAll.lfc";
-        pif.pitsByCreatingPI(context, tadPath, function(segment) {
+        pif.pitsByCreatingPI(this.tadContext, tadPath, function(segment) {
             segment.start(null, function(processResult) {
                 console.log("执行PITS回调");
 

@@ -4,9 +4,10 @@
 import {ICommandHandler} from "./ICommandHandler";
 import {Command} from "./Command";
 import {HashMap} from "../lib/HashMap";
-import {EngineEventManager} from "./EngineEventManager";
 import {OpenPanel} from "./commandhandlers/OpenPanel";
 import {EngineEvent} from "../const/EngineEvent";
+import {ServiceObj} from "../const/ServiceObj";
+import {Context} from "../runtime/Context";
 
 export class CommandHandlerExecutor {
 
@@ -17,7 +18,8 @@ export class CommandHandlerExecutor {
     }
 
     public handleEvent = function(msg,data){
-        let executor :CommandHandlerExecutor =  data.executor;
+        var ctx : Context = data.context;
+        let executor :CommandHandlerExecutor = ctx.get(ServiceObj.CommandHandlerExecutor);
 
         alert("收到事件!!"+msg+"  "+data.param);
         let command = new Command(msg,data.param);
