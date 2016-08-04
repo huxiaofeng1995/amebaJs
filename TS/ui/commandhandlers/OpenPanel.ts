@@ -6,5 +6,7 @@ import {Command} from "../Command";
 export class OpenPanel implements ICommandHandler {
 
     handleCommand(command:Command, callack:any):void {
+       alert("开始处理OpenPanel: "+command.getName()+" "+command.getData().param);
+
     }
 }

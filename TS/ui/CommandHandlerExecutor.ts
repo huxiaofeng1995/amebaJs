@@ -16,6 +16,7 @@ export class CommandHandlerExecutor {
     }
 
     public handleEvent = function(msg,data){
+        alert("收到事件!!");
         let command = new Command(msg,data.param);
         this.execute(command,data.callback);
     }

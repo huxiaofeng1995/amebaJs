@@ -19,4 +19,8 @@ export class EventHub {
     public static clearAllSubscriptions():void{
         PubSub.clearAllSubscriptions();
     }
+
+    public static publish(topic:string,data:any){
+        PubSub.publish(topic,data);
+    }
 }

@@ -1,10 +1,8 @@
-import {IPanelCompositeFactory} from "./IPanelCompositeFactory";
 /**
  * Created by Oliver on 2016-08-04 0004.
  */
-
-/// <reference path="../lib/pubsub.d.ts" />
 /// <reference path="../lib/jquery.d.ts" />
+/// <reference path="../lib/pubsub.d.ts" />
 import {IPanelCompositeFactory} from "./IPanelCompositeFactory";
 import {Context} from "../runtime/Context";
 import GUID from "../lib/GUID";
@@ -12,6 +10,7 @@ import {HashMap} from "../lib/HashMap";
 import {EngineEventManager} from "./EngineEventManager";
 import {CommandHandlerExecutor} from "./CommandHandlerExecutor";
 import {Tad} from "./Tad";
+import {EventHub} from "../runtime/EventHub";
 
 class DefaultPanelFactory implements IPanelCompositeFactory {
     getPanelComposite():any {
@@ -40,12 +39,21 @@ export class DeskTop {
         // 0.注册事件模块
         let commandExecutor = new CommandHandlerExecutor();
         this.getContext().set("CommandHandlerExecutor",commandExecutor);
-        EngineEventManager.init(commandExecutor);
+        EngineEventManager.init(commandExecutor.handleEvent);
         // 1.启动tad
         let id:string = "Tad_"+GUID();
         let defaultTad = new Tad(id);
         defaultTad.start();
     }
-
-
 }
+let desktop = new DeskTop();
+desktop.init("");
+
+let callback = function () {
+    alert("callback");
+}
+let data = {
+  param:{"a":"b"},
+  callback:callback
+};
+EventHub.publish(EngineEventManager.COMMAND_OpenPanel,data);

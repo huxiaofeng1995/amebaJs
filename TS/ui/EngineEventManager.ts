@@ -10,6 +10,7 @@ export class EngineEventManager {
     public static COMMAND_OpenPanel=EngineEventManager.ENGINE_EVENT+"OpenPanel";
 
     public static init(subscriber:any){
+        alert("注册事件");
         EventHub.subscribe(EngineEventManager.COMMAND_OpenPanel,subscriber);
     }
 

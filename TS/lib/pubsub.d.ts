@@ -8,5 +8,11 @@ interface PubSub {
     unsubscribe( subscriber:any ):PubSub;
 
     clearAllSubscriptions():PubSub;
+
+    publish(topic:string,data:any):PubSub;
+    
+}
+declare module "PubSub" {
+    export = PubSub;
 }
 declare var PubSub: PubSub;
