@@ -34,28 +34,38 @@ export class DeskTop {
 
         // 0.创建Context
         this.sessionCtx = Context.baseContext.createChild("Desktop_"+GUID());
-        //  0.创建面板工厂
+        // 1.创建面板工厂
         var defaultPanelFactory:IPanelCompositeFactory = new DefaultPanelFactory();
         this.panelCompositeFactoryRegistry.put(DeskTop.PANEL_FACTORY_DEFAULT,defaultPanelFactory);
-        // 0.注册事件模块
+        // 2.注册事件模块
         let commandExecutor = new CommandHandlerExecutor();
-        this.getContext().set("CommandHandlerExecutor",commandExecutor);
+        this.getContext().set(ServiceObj.CommandHandlerExecutor,commandExecutor);
         EngineEventManager.init(commandExecutor.handleEvent);
+        // 3.资源
+        var resourceDocumentTable = new ResourceDocumentTable();
+        Context.baseContext.set(ServiceObj.ResourceDocumentTable, resourceDocumentTable);
+        // 4.表达式引擎
+        var expressionEngine = new DefaultExpressionEngine();
+        Context.baseContext.set(ServiceObj.DefaultExpressionEngine, expressionEngine);
+        // 5.PI
+        var pif = new ProcessInstanceFactory();
+        Context.baseContext.set(ServiceObj.ProcessInstanceFactory, pif);
+
         // 1.启动tad
         let id:string = "Tad_"+GUID();
-        let defaultTad = new Tad(id);
+        let defaultTad = new Tad(id,this);
         defaultTad.start();
     }
 }
-let desktop = new DeskTop();
-desktop.init("");
-
-let callback = function () {
-    alert("callback");
-}
-let data = {
-  param:{"a":"b"},
-  callback:callback,
-  executor:desktop.getContext().get("CommandHandlerExecutor")
-};
-EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);
+// let desktop = new DeskTop();
+// desktop.init("");
+//
+// let callback = function () {
+//     alert("callback");
+// }
+// let data = {
+//   param:{"a":"b"},
+//   callback:callback,
+//   executor:desktop.getContext().get("CommandHandlerExecutor")
+// };
+// EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);
