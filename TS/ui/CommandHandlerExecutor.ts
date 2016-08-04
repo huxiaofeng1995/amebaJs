@@ -6,19 +6,22 @@ import {Command} from "./Command";
 import {HashMap} from "../lib/HashMap";
 import {EngineEventManager} from "./EngineEventManager";
 import {OpenPanel} from "./commandhandlers/OpenPanel";
+import {EngineEvent} from "../const/EngineEvent";
 
 export class CommandHandlerExecutor {
 
     private handlers:HashMap = new HashMap();
 
     constructor (){
-        this.registerCommandHandler(EngineEventManager.COMMAND_OpenPanel,new OpenPanel());
+        this.registerCommandHandler(EngineEvent.COMMAND_OpenPanel,new OpenPanel());
     }
 
     public handleEvent = function(msg,data){
-        alert("收到事件!!");
+        let executor :CommandHandlerExecutor =  data.executor;
+
+        alert("收到事件!!"+msg+"  "+data.param);
         let command = new Command(msg,data.param);
-        this.execute(command,data.callback);
+        executor.execute(command,data.callback);
     }
 
     public registerCommandHandler(name:string, handler:ICommandHandler) {
@@ -30,7 +33,9 @@ export class CommandHandlerExecutor {
     }
 
     public execute(command:Command, callback:any) {
-        let handler:ICommandHandler = this.handlers.get(name);
+        alert("开始执行");
+        let handler:ICommandHandler = this.handlers.get(command.getName());
+        alert("handler"+handler);
         handler.handleCommand(command, callback);
     }
 }

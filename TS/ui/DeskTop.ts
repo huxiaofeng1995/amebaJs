@@ -11,6 +11,7 @@ import {EngineEventManager} from "./EngineEventManager";
 import {CommandHandlerExecutor} from "./CommandHandlerExecutor";
 import {Tad} from "./Tad";
 import {EventHub} from "../runtime/EventHub";
+import {EngineEvent}from "../const/EngineEvent";
 
 class DefaultPanelFactory implements IPanelCompositeFactory {
     getPanelComposite():any {
@@ -54,6 +55,7 @@ let callback = function () {
 }
 let data = {
   param:{"a":"b"},
-  callback:callback
+  callback:callback,
+  executor:desktop.getContext().get("CommandHandlerExecutor")
 };
-EventHub.publish(EngineEventManager.COMMAND_OpenPanel,data);
+EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);
