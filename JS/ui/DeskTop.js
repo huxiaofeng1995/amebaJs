@@ -16,7 +16,7 @@ define(["require", "exports", "../runtime/Context", "../lib/GUID", "../lib/HashM
         DeskTop.prototype.getContext = function () {
             return this.sessionCtx;
         };
-        DeskTop.prototype.init = function (tadPath) {
+        DeskTop.prototype.init = function () {
             // 0.创建Context
             this.sessionCtx = Context_1.Context.baseContext.createChild("Desktop_" + GUID_1.default());
             // 1.创建面板工厂
@@ -37,24 +37,27 @@ define(["require", "exports", "../runtime/Context", "../lib/GUID", "../lib/HashM
             Context_1.Context.baseContext.set(ServiceObj_1.ServiceObj.ProcessInstanceFactory, pif);
             // 1.启动tad
             var id = "Tad_" + GUID_1.default();
-            var defaultTad = new Tad_1.Tad(id, this);
-            defaultTad.start(tadPath);
+            // let tadPath = "/AppFramework_2013B/trade/test/aa/Aa.tad";
+            var tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
+            var defaultTad = new Tad_1.Tad(id, this, tadPath);
+            defaultTad.start();
         };
         DeskTop.PANEL_FACTORY_DEFAULT = "";
         DeskTop.PANEL_FACTORY_WINDOW = "window";
         return DeskTop;
     }());
     exports.DeskTop = DeskTop;
+    var desktop = new DeskTop();
+    desktop.init();
 });
-// let desktop = new DeskTop();
-// desktop.init("");
-// let callback = function () {
-//     alert("callback");
-// }
-// let data = {
-//   param:{"a":"b"},
-//   callback:callback,
-//   context:Context.baseContext
-// };
-// EventHub.publish(EngineEvent.COMMAND_OpenPanel,data); 
+/*
+let callback = function () {
+    alert("callback");
+}
+let data = {
+    param:{"a":"b"},
+    callback:callback,
+    context:Context.baseContext
+};
+EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);*/
 //# sourceMappingURL=DeskTop.js.map

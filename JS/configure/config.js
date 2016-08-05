@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = config = {
         // TradeIP: "http://192.168.11.112:50002/servlets/downloadResource/AppFramework_2013B/"
-        TradeIP: "http://localhost:8080/pub_TS"
+        TradeIP: "http://localhost:63342/amebaJs"
     };
 });
 //# sourceMappingURL=config.js.map

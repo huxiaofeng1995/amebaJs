@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TradeAssembly caption="">
+    <DataBasket/>
+    <DataRule/>
+    <CanEditSdb value="false"/>
+    <MainProcess path="/AppFramework_20131B/trade/test/aa/Aa.mpt">
+        <Node caption="" id="1" type="UIStep">
+            <InArg name="path">"/AppFramework_20131B/trade/test/aa/a.abf"</InArg>
+            <InArg name="target"/>
+            <InArg name="targetArgMap"/>
+            <InArg name="mapping"/>
+             <Mappings path=/AppFramework_20131B/trade/test/aa/Aa.tad"/>
+        </Node>
+    </MainProcess>
+    <InternalVars/>
+</TradeAssembly>

@@ -63,17 +63,16 @@ define(["require", "exports", "./define/TradeAssemblyDefine"], function (require
                 }
             }
             // 处理内部变量
-            if (root.InternalVars != undefined) {
-                var vars = root.InternalVars.Var;
-                if (vars instanceof Array) {
-                    for (var i = 0; i < vars.length; i++) {
-                        tad.addVarMap(vars[i]._name);
-                    }
-                }
-                else {
-                    tad.addVarMap(vars._name);
-                }
-            }
+            // if(root.InternalVars != undefined) {
+            //     var vars = root.InternalVars.Var;
+            //     if(vars instanceof Array) {
+            //         for(var i = 0; i < vars.length; i++) {
+            //             tad.addVarMap(vars[i]._name);
+            //         }
+            //     } else {
+            //         tad.addVarMap(vars._name);
+            //     }
+            // }
             callback(tad);
         };
         ;

@@ -1,11 +1,12 @@
 define(["require", "exports", "../runtime/Context", "../lib/GUID", "../const/ServiceObj"], function (require, exports, Context_1, GUID_1, ServiceObj_1) {
     "use strict";
     var Tad = (function () {
-        function Tad(id, host) {
+        function Tad(id, host, path) {
             this.id = "";
             this.panels = {};
             this.id = id;
             this.host = host;
+            this.path = path;
         }
         Tad.prototype.addPanel = function (id, panel) {
             this.panels[id] = panel;
@@ -13,7 +14,7 @@ define(["require", "exports", "../runtime/Context", "../lib/GUID", "../const/Ser
         Tad.prototype.getPanel = function (id) {
             return this.panels[id];
         };
-        Tad.prototype.start = function (tadPath) {
+        Tad.prototype.start = function () {
             //0.创建DM
             //1.启动流程
             var contextId = GUID_1.default();
@@ -21,8 +22,7 @@ define(["require", "exports", "../runtime/Context", "../lib/GUID", "../const/Ser
             Context_1.Context.prototype.setCurrent(this.tadContext);
             var pif = this.tadContext.get(ServiceObj_1.ServiceObj.ProcessInstanceFactory);
             // var tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
-            // var tadPath = "business/commonComponent/ClearAll.lfc";
-            pif.pitsByCreatingPI(this.tadContext, tadPath, function (segment) {
+            pif.pitsByCreatingPI(this.tadContext, this.path, function (segment) {
                 segment.start(null, function (processResult) {
                     console.log("执行PITS回调");
                     var outArgMap = processResult.getOutArgMap();

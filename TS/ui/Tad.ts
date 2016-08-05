@@ -13,10 +13,12 @@ export class Tad {
     private host:DeskTop;
     private panels = {};
     private tadContext:Context;
+    private path:string;
 
-    constructor(id:string,host:DeskTop) {
+    constructor(id:string,host:DeskTop,path:string) {
         this.id = id;
         this.host = host;
+        this.path = path;
     }
 
     public addPanel(id:string, panel:TadPanel):void  {
@@ -27,7 +29,7 @@ export class Tad {
         return this.panels[id];
     }
 
-    public start(tadPath):void {
+    public start():void {
         //0.创建DM
 
         //1.启动流程
@@ -38,8 +40,8 @@ export class Tad {
         let pif = this.tadContext.get(ServiceObj.ProcessInstanceFactory);
 
         // var tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
-        // var tadPath = "business/commonComponent/ClearAll.lfc";
-        pif.pitsByCreatingPI(this.tadContext, tadPath, function(segment) {
+
+        pif.pitsByCreatingPI(this.tadContext, this.path, function(segment) {
             segment.start(null, function(processResult) {
                 console.log("执行PITS回调");
 

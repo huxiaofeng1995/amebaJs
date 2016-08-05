@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MainProcessTemplate caption="aa" idCount="1" start="1">
+    <UIStep id="1" showId="1">
+        <Entry id="xy_location" value="85,226"/>
+        <Entry id="xy_size" value="150,60"/>
+        <Out caption="正常出口" id="1" name="正常出口" next="1001" targetTerminal="正常出口"/>
+        <Exception name="" next="" targetTerminal=""/>
+    </UIStep>
+    <EndStep id="1000">
+        <Entry id="xy_location" value="50,400"/>
+        <Entry id="xy_size" value="180,80"/>
+        <In caption="正常出口" id="1" name="正常出口"/>
+    </EndStep>
+    <DataBasket/>
+    <InternalVars/>
+    <End caption="正常出口" id="1001" name="正常出口"/>
+</MainProcessTemplate>

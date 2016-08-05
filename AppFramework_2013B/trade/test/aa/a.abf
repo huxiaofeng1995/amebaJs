@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+</head>
+<body>
+<div id="Compositerhamn6qs69rj" style="position: absolute; top: 0px; bottom: 0px; left: 0px; right: 0px;">
+    <nav class="top-nav adore_header" id="Compositerhamn6qs69ri" style="height: 200px;">
+        <div>
+            <div class="row">
+                <div class="input-field col s11 m4 l4 offset-s0 offset-m2 offset-l2"
+                     id="Textrhamn6qs69rh_containerNode">
+                    <i class="icon_normal active mdi-action-account-circle prefix"></i>
+                    <input type="text" id="Textrhamn6qs69rh">
+                    <label for="Textrhamn6qs69rh" class="active">帐号</label>
+                    <span class="span_base span_prefix"></span>
+                </div>
+                <div class="input-field col s11 m4 l4 offset-s0 offset-m1 offset-l1"
+                     id="Textrhamn6qs69rg_containerNode">
+                    <i class="icon_normal mdi-action-lock prefix"></i>
+                    <input type="password" id="Textrhamn6qs69rg">
+                    <label for="Textrhamn6qs69rg">密码</label>
+                    <span class="span_base span_prefix"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="waves-effect waves-light btn adore_button s3 m3 l2 col offset-s0 offset-m0 offset-l1"
+                     tabindex="-1" id="Buttonrhamn6qs69rf">
+                    <span>显示</span>
+                    <i></i>
+                </div>
+                <div class="waves-effect waves-light btn adore_button s3 m3 l2 col offset-s0 offset-m0 offset-l1"
+                     tabindex="-1" id="Buttonrhamn6qs69re">
+                    <span>同步打开</span>
+                    <i></i>
+                </div>
+                <div class="waves-effect waves-light btn adore_button s3 m3 l2 col offset-s0 offset-m0 offset-l1"
+                     tabindex="-1" id="Buttonrhamn6qs69rd">
+                    <span>异步打开</span>
+                    <i></i>
+                </div>
+                <div class="waves-effect waves-light btn adore_button s3 m3 l2 col offset-s0 offset-m0 offset-l1"
+                     tabindex="-1" id="Buttonrhamn6qs69rc">
+                    <span>toTwo</span>
+                    <i></i>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 0px;">
+                <nobr class="adore_label s11 m6 l6 col offset-s1 offset-m3 offset-l3" id="Labelrhamn6qs69rb">
+                    结果：
+                </nobr>
+            </div>
+        </div>
+    </nav>
+    <footer class="adore_footer" id="Compositerhamn6qs69ra" style="height: 1px;"></footer>
+    <main class="adore_body" id="Compositerhamn6qs69r9"
+          style="top: 200px; bottom: 1px; position: absolute; left: 0px; right: 0px;">
+    </main>
+</div>
+</div>
+</body>
+</html>

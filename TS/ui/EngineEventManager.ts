@@ -10,6 +10,7 @@ export class EngineEventManager {
 
     public static init(subscriber:any){
         EventHub.subscribe(EngineEvent.COMMAND_OpenPanel,subscriber);
+        EventHub.subscribe(EngineEvent.COMMAND_ShowMessage,subscriber);
     }
 
 }

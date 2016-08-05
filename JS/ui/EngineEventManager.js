@@ -8,6 +8,7 @@ define(["require", "exports", "../runtime/EventHub", "../const/EngineEvent"], fu
         }
         EngineEventManager.init = function (subscriber) {
             EventHub_1.EventHub.subscribe(EngineEvent_1.EngineEvent.COMMAND_OpenPanel, subscriber);
+            EventHub_1.EventHub.subscribe(EngineEvent_1.EngineEvent.COMMAND_ShowMessage, subscriber);
         };
         return EngineEventManager;
     }());

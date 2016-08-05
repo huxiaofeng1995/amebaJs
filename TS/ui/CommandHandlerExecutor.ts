@@ -8,6 +8,7 @@ import {OpenPanel} from "./commandhandlers/OpenPanel";
 import {EngineEvent} from "../const/EngineEvent";
 import {ServiceObj} from "../const/ServiceObj";
 import {Context} from "../runtime/Context";
+import {ShowMessage} from "./commandhandlers/ShowMessage";
 
 export class CommandHandlerExecutor {
 
@@ -15,6 +16,7 @@ export class CommandHandlerExecutor {
 
     constructor (){
         this.registerCommandHandler(EngineEvent.COMMAND_OpenPanel,new OpenPanel());
+        this.registerCommandHandler(EngineEvent.COMMAND_ShowMessage,new ShowMessage());
     }
 
     public handleEvent = function(msg,data){
@@ -22,7 +24,7 @@ export class CommandHandlerExecutor {
         let executor :CommandHandlerExecutor = ctx.get(ServiceObj.CommandHandlerExecutor);
 
         alert("收到事件!!"+msg+"  "+data.param);
-        let command = new Command(msg,data.param);
+        let command = new Command(msg,data);
         executor.execute(command,data.callback);
     }
 

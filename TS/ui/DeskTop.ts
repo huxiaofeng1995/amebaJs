@@ -34,7 +34,7 @@ export class DeskTop {
         return this.sessionCtx;
     }
 
-    public init(tadPath:string) {
+    public init() {
 
         // 0.创建Context
         this.sessionCtx = Context.baseContext.createChild("Desktop_"+GUID());
@@ -57,19 +57,23 @@ export class DeskTop {
 
         // 1.启动tad
         let id:string = "Tad_"+GUID();
-        let defaultTad = new Tad(id,this);
-        defaultTad.start(tadPath);
+        // let tadPath = "/AppFramework_2013B/trade/test/aa/Aa.tad";
+        let tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
+        let defaultTad = new Tad(id,this,tadPath);
+
+        defaultTad.start();
     }
 }
-// let desktop = new DeskTop();
-// desktop.init("");
+let desktop = new DeskTop();
+desktop.init();
 
-// let callback = function () {
-//     alert("callback");
-// }
-// let data = {
-//   param:{"a":"b"},
-//   callback:callback,
-//   context:Context.baseContext
-// };
-// EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);
+/*
+let callback = function () {
+    alert("callback");
+}
+let data = {
+    param:{"a":"b"},
+    callback:callback,
+    context:Context.baseContext
+};
+EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);*/
