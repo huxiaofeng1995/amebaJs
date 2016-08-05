@@ -136,7 +136,7 @@ define(["require", "exports", "./define/ComponentElement", "./define/LogicletCom
             return definitionBean.getStartNodeId();
         };
         AbstractALRProcessDefinitionAdapter.prototype.getEndValueMap = function (definitionBean) {
-            return null;
+            return definitionBean.getEndValueMap();
         };
         return AbstractALRProcessDefinitionAdapter;
     }());

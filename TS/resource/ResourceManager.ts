@@ -7,7 +7,7 @@ class ResourceManager {
     public constructor() {};
 
     public getResourceFile(path: string, callback: Function): void {
-        cache.clear();
+        // cache.clear();
         // get file from cache
         cache.getItem(path, function(file) {
             console.log("从缓存中取得文件：" + path.substr(path.lastIndexOf("/") + 1, path.length - 1));

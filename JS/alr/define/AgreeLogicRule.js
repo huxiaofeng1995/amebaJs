@@ -32,6 +32,9 @@ define(["require", "exports", "../../lib/HashMap"], function (require, exports, 
         AgreeLogicRule.prototype.getEndValue = function (end) {
             return this.endValueMap.get(end);
         };
+        AgreeLogicRule.prototype.getEndValueMap = function () {
+            return this.endValueMap;
+        };
         AgreeLogicRule.prototype.getNode = function (nodeId) {
             return this.componentElementMap.get(nodeId);
         };

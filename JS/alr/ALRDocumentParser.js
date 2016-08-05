@@ -4,7 +4,7 @@ define(["require", "exports", "./define/AgreeLogicRule", "./define/Lane", "./def
         function ALRDocumentParser() {
         }
         ALRDocumentParser.prototype.parse = function (path, input, callback) {
-            var xml2json, doc, alr, root, components, lfcs, afts, end, lanes;
+            var xml2json, doc, alr, root, components, lfcs, afts, ends, lanes;
             // 把xml转化为json
             xml2json = new X2JS();
             doc = xml2json.xml_str2json(input);
@@ -70,9 +70,16 @@ define(["require", "exports", "./define/AgreeLogicRule", "./define/Lane", "./def
                     alr.addLane(lane);
                 }
             }
-            end = root.End;
-            if (end != undefined) {
-                alr.addEndValue(end._id, end._name);
+            ends = root.End;
+            if (ends != undefined) {
+                if (ends instanceof Array) {
+                    for (var i = 0; i < ends.length; i++) {
+                        alr.addEndValue(ends[i]._id, ends[i]._name);
+                    }
+                }
+                else {
+                    alr.addEndValue(ends._id, ends._name);
+                }
             }
             callback(alr);
         };

@@ -9,7 +9,7 @@ declare var X2JS;
 
 class ALRDocumentParser implements IDocumentParser {
     public parse(path: string, input: string, callback: Function): void {
-        var xml2json, doc, alr, root, components, lfcs, afts, end, lanes;
+        var xml2json, doc, alr, root, components, lfcs, afts, ends, lanes;
         
         // 把xml转化为json
         xml2json = new X2JS();
@@ -78,9 +78,16 @@ class ALRDocumentParser implements IDocumentParser {
             }
         }
 
-        end = root.End;
-        if(end != undefined) {
-            alr.addEndValue(end._id, end._name);
+        ends = root.End;
+        if(ends != undefined) {
+            if(ends instanceof Array) {
+                for(var i = 0; i < ends.length; i++) {
+                    alr.addEndValue(ends[i]._id, ends[i]._name);
+                }
+            } else {
+                alr.addEndValue(ends._id, ends._name);
+            }
+            
         }
 
         callback(alr);

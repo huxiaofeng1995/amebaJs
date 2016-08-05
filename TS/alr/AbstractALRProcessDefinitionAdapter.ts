@@ -161,7 +161,7 @@ abstract class AbstractALRProcessDefinitionAdapter implements IProcessDefinition
     }
 
     public getEndValueMap(definitionBean: Object): HashMap {
-        return null;
+        return (<AgreeLogicRule> definitionBean).getEndValueMap();
     }
 
     abstract getFileExtension(): string;
