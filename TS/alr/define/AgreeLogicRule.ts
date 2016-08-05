@@ -38,6 +38,9 @@ class AgreeLogicRule {
     public getEndValue(end: string): string {
         return this.endValueMap.get(end);
     }
+    public getEndValueMap(): HashMap {
+        return this.endValueMap;
+    }
     public getNode(nodeId: string): Object {
         return this.componentElementMap.get(nodeId);
     }
