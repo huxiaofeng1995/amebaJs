@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MainProcessTemplate caption="测试自定义控件" idCount="3" start="2">
-    <LFC caption="lfc" id="2" path="AppFramework_2013B/trade/test/bug0041/Lfc1.lfc">
-        <Mappings path="AppFramework_2013B/trade/test/bug0041/TestConrtols.mpt"/>
+    <LFC caption="lfc" id="2" path="/AppFramework_2013B/trade/test/bug0041/Lfc1.lfc">
+        <Mappings path="/AppFramework_2013B/trade/test/bug0041/TestConrtols.mpt"/>
         <Entry id="xy_location" value="49,204"/>
         <Entry id="xy_size" value="180,80"/>
         <Out caption="正常出口" id="1" name="正常出口" next="3" targetTerminal="正常端口"/>

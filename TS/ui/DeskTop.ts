@@ -58,18 +58,18 @@ export class DeskTop {
         // 1.启动tad
         let id:string = "Tad_"+GUID();
         let defaultTad = new Tad(id,this);
-        // defaultTad.start();
+        defaultTad.start(tadPath);
     }
 }
-let desktop = new DeskTop();
-desktop.init("");
+// let desktop = new DeskTop();
+// desktop.init("");
 
-let callback = function () {
-    alert("callback");
-}
-let data = {
-  param:{"a":"b"},
-  callback:callback,
-  context:Context.baseContext
-};
-EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);
+// let callback = function () {
+//     alert("callback");
+// }
+// let data = {
+//   param:{"a":"b"},
+//   callback:callback,
+//   context:Context.baseContext
+// };
+// EventHub.publish(EngineEvent.COMMAND_OpenPanel,data);

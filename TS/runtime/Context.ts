@@ -106,7 +106,7 @@ class Context {
             return result;
         }
         if(this.parent != null) {
-            return this.parent.getLocal(name);
+            return this.parent.get(name);
         }
         return null;
     };

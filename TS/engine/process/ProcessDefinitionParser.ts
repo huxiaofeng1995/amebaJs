@@ -1,5 +1,6 @@
 import {TADProcessDefinitionAdapter} from "../../tad/TADProcessDefinitionAdapter";
 import {LFCProcessDefinitionAdapter} from "../../lfc/LFCProcessDefinitionAdapter";
+import {ALRProcessDefinitionAdapter} from "../../alr/ALRProcessDefinitionAdapter";
 import {ProcessDefinition} from "./ProcessDefinition";
 import {IDocumentParser} from "../../resource/IDocumentParser";
 
@@ -23,6 +24,8 @@ class ProcessDefinitionParser implements IDocumentParser {
             adapter = new TADProcessDefinitionAdapter();
         } else if(fileType === "lfc") {
             adapter = new LFCProcessDefinitionAdapter();
+        } else if(fileType === "alr") {
+            adapter = new ALRProcessDefinitionAdapter();
         }
         definitionBean = adapter.parse(path, inputStream, function(definitionBean) {
             callback(new ProcessDefinition(adapter, definitionBean));

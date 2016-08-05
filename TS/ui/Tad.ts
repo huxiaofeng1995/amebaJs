@@ -27,7 +27,7 @@ export class Tad {
         return this.panels[id];
     }
 
-    public start():void {
+    public start(tadPath):void {
         //0.创建DM
 
         //1.启动流程
@@ -37,7 +37,7 @@ export class Tad {
 
         let pif = this.tadContext.get(ServiceObj.ProcessInstanceFactory);
 
-        var tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
+        // var tadPath = "/AppFramework_2013B/trade/test/bug0041/Bug0041.tad";
         // var tadPath = "business/commonComponent/ClearAll.lfc";
         pif.pitsByCreatingPI(this.tadContext, tadPath, function(segment) {
             segment.start(null, function(processResult) {

@@ -145,7 +145,7 @@ class ProcessInstanceThreadSegment {
      * 创建节点任务
      */
     public createNodeTask(nodeId: string): LogicRealmTask {
-        var PITS, nodeLRT, outs, endName, endId;
+        var PITS, nodeLRT, outs;
         
         PITS = this;  // 避免this指代混乱
         // 创建节点任务
@@ -156,11 +156,17 @@ class ProcessInstanceThreadSegment {
         // 获取节点出口，给节点后续进行挂钩
         outs = PITS.definition.getOutNextMap(nodeId);
         if(outs != undefined) {
-            for(endName in outs.map) {
-                endId = outs.map[endName];
-                nodeLRT.hook(new LogicRealmTask(nodeLRT.realm , "StepNodeOut", function() {
-                    PITS.stepNodeOut(endName, endId);
-                }), endName);
+            var keySet = outs.keySet();
+            for(let i = 0; i < keySet.length; i++) {
+                (function(i) {
+                    let endName = keySet[i];
+                    let endId = outs.get(keySet[i]);
+                    nodeLRT.hook(new LogicRealmTask(nodeLRT.realm, "StepNodeOut-" + endName, function() {
+                        PITS.stepNodeOut(endName, endId);
+                    }), endName);
+                })(i);
+
+                
             }
         }
         return nodeLRT;

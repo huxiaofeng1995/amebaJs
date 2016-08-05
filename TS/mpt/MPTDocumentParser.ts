@@ -91,7 +91,7 @@ class MPTDocumentParser implements IDocumentParser {
         callback(mpt);
     };
     public parseStepElement(step: MPTStep, element): MPTStep {
-        var out, ex, inArg, inArgMap, inArgName, inArgText, outArg, outArgMap, outArgName, outArgText,
+        var outs, ex, inArg, inArgMap, inArgName, inArgText, outArg, outArgMap, outArgName, outArgText,
             mappings;
         
         step.setId(element._id);
@@ -99,8 +99,15 @@ class MPTDocumentParser implements IDocumentParser {
         step.setCaption(element._caption);
         step.setDescription(element._description);
         
-        out = element.Out;
-        step.addOutNext(out._name, out._next);
+        outs = element.Out;
+        if(outs instanceof Array) {
+            for(var i = 0; i < outs.length; i++) {
+                step.addOutNext(outs[i]._name, outs[i]._next);
+            }
+        } else {
+            step.addOutNext(outs._name, outs._next);
+        }
+        
         
         ex = element.Exception;
         step.setExceptionNext(ex._next);

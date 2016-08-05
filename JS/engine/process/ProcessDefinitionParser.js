@@ -1,4 +1,4 @@
-define(["require", "exports", "../../tad/TADProcessDefinitionAdapter", "../../lfc/LFCProcessDefinitionAdapter", "./ProcessDefinition"], function (require, exports, TADProcessDefinitionAdapter_1, LFCProcessDefinitionAdapter_1, ProcessDefinition_1) {
+define(["require", "exports", "../../tad/TADProcessDefinitionAdapter", "../../lfc/LFCProcessDefinitionAdapter", "../../alr/ALRProcessDefinitionAdapter", "./ProcessDefinition"], function (require, exports, TADProcessDefinitionAdapter_1, LFCProcessDefinitionAdapter_1, ALRProcessDefinitionAdapter_1, ProcessDefinition_1) {
     "use strict";
     /**
      * 流程定义对象解析器
@@ -21,6 +21,9 @@ define(["require", "exports", "../../tad/TADProcessDefinitionAdapter", "../../lf
             }
             else if (fileType === "lfc") {
                 adapter = new LFCProcessDefinitionAdapter_1.LFCProcessDefinitionAdapter();
+            }
+            else if (fileType === "alr") {
+                adapter = new ALRProcessDefinitionAdapter_1.ALRProcessDefinitionAdapter();
             }
             definitionBean = adapter.parse(path, inputStream, function (definitionBean) {
                 callback(new ProcessDefinition_1.ProcessDefinition(adapter, definitionBean));

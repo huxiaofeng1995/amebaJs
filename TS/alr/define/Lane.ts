@@ -34,3 +34,5 @@ class Lane {
         this.containsNodesId.push(nodeId);
     }
 }
+
+export {Lane};

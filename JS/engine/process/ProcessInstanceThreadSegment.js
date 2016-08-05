@@ -129,7 +129,7 @@ define(["require", "exports", "../../lib/HashMap", "../../runtime/realm/LogicRea
          * 创建节点任务
          */
         ProcessInstanceThreadSegment.prototype.createNodeTask = function (nodeId) {
-            var PITS, nodeLRT, outs, endName, endId;
+            var PITS, nodeLRT, outs;
             PITS = this; // 避免this指代混乱
             // 创建节点任务
             nodeLRT = new LogicRealmTask_1.LogicRealmTask(PITS.coreTask.getRealm(), "节点-" + nodeId, function () {
@@ -138,11 +138,15 @@ define(["require", "exports", "../../lib/HashMap", "../../runtime/realm/LogicRea
             // 获取节点出口，给节点后续进行挂钩
             outs = PITS.definition.getOutNextMap(nodeId);
             if (outs != undefined) {
-                for (endName in outs.map) {
-                    endId = outs.map[endName];
-                    nodeLRT.hook(new LogicRealmTask_1.LogicRealmTask(nodeLRT.realm, "StepNodeOut", function () {
-                        PITS.stepNodeOut(endName, endId);
-                    }), endName);
+                var keySet = outs.keySet();
+                for (var i = 0; i < keySet.length; i++) {
+                    (function (i) {
+                        var endName = keySet[i];
+                        var endId = outs.get(keySet[i]);
+                        nodeLRT.hook(new LogicRealmTask_1.LogicRealmTask(nodeLRT.realm, "StepNodeOut-" + endName, function () {
+                            PITS.stepNodeOut(endName, endId);
+                        }), endName);
+                    })(i);
                 }
             }
             return nodeLRT;

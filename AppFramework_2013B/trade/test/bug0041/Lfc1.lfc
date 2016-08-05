@@ -18,7 +18,7 @@
         <Out caption="成功" id="1" name="success" next="3" targetTerminal="正常端口"/>
         <Exception name="" next="" targetTerminal=""/>
     </Component>
-    <LFC id="3" path="AppFramework_2013B/trade/test/bug0041/Lfc2.lfc">
+    <LFC id="3" path="/AppFramework_2013B/trade/test/bug0041/Lfc2.lfc">
         <Mappings path="/AppFramework_2013B/trade/test/bug0041/Lfc1.lfc"/>
         <Entry id="xy_location" value="65,499"/>
         <Entry id="xy_size" value="180,80"/>

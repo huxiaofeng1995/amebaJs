@@ -171,14 +171,13 @@ class TADProcessDefinitionAdapter implements IProcessDefinitionAdapter {
                         }
 
                         Context.getCurrent().get("ProcessInstanceFactory").pitsByGettingPIT(pit.getLogicRealm(), alrPath, function(newpits) {
-                            currentTask.startSub(function() {
-                                newpits.start(null, function(processResult) {
-                                    currentTask.end(processResult.getEnd()); // 完结父流程的当前节点
-                
-                                    console.log("执行PITS回调");
-                                    console.log("结束PITS：" + newpits.getId());
-                                });
-                            }) ;
+                            currentTask.setSuspend(false);
+                            newpits.start(null, function(processResult) {
+                                currentTask.end(processResult.getEnd()); // 完结父流程的当前节点
+            
+                                console.log("执行PITS回调");
+                                console.log("结束PITS：" + newpits.getId());
+                            });
                         });
                         currentTask.setSuspend(true);
                     } 

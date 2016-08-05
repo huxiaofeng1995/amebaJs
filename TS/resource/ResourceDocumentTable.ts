@@ -4,6 +4,7 @@ import {LFCDocumentParser} from "../lfc/LFCDocumentParser";
 import {TADDocumentParser} from "../tad/TADDocumentParser";
 import {MPTDocumentParser} from "../mpt/MPTDocumentParser";
 import {SEDADocumentParser} from "../alr/SEDADocumentParser";
+import {ALRDocumentParser} from "../alr/ALRDocumentParser";
 
 /**
  * 资源文件对象
@@ -26,6 +27,8 @@ class ResourceDocumentTable {
                 parser = new MPTDocumentParser();
             } else if(clazz === "SedaEntry") {
                 parser = new SEDADocumentParser();
+            } else if(clazz === "AgreeLogicRule") {
+                parser = new ALRDocumentParser();
             }
             parser.parse(path, file, function(result) {
                 callback(result);

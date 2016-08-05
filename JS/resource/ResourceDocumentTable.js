@@ -1,4 +1,4 @@
-define(["require", "exports", "./ResourceManager", "../engine/process/ProcessDefinitionParser", "../lfc/LFCDocumentParser", "../tad/TADDocumentParser", "../mpt/MPTDocumentParser", "../alr/SEDADocumentParser"], function (require, exports, ResourceManager_1, ProcessDefinitionParser_1, LFCDocumentParser_1, TADDocumentParser_1, MPTDocumentParser_1, SEDADocumentParser_1) {
+define(["require", "exports", "./ResourceManager", "../engine/process/ProcessDefinitionParser", "../lfc/LFCDocumentParser", "../tad/TADDocumentParser", "../mpt/MPTDocumentParser", "../alr/SEDADocumentParser", "../alr/ALRDocumentParser"], function (require, exports, ResourceManager_1, ProcessDefinitionParser_1, LFCDocumentParser_1, TADDocumentParser_1, MPTDocumentParser_1, SEDADocumentParser_1, ALRDocumentParser_1) {
     "use strict";
     /**
      * 资源文件对象
@@ -25,6 +25,9 @@ define(["require", "exports", "./ResourceManager", "../engine/process/ProcessDef
                 }
                 else if (clazz === "SedaEntry") {
                     parser = new SEDADocumentParser_1.SEDADocumentParser();
+                }
+                else if (clazz === "AgreeLogicRule") {
+                    parser = new ALRDocumentParser_1.ALRDocumentParser();
                 }
                 parser.parse(path, file, function (result) {
                     callback(result);

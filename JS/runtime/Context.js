@@ -104,7 +104,7 @@ define(["require", "exports", "../lib/HashMap"], function (require, exports, Has
                 return result;
             }
             if (this.parent != null) {
-                return this.parent.getLocal(name);
+                return this.parent.get(name);
             }
             return null;
         };
