@@ -8,7 +8,7 @@ export class ShowMessage implements ICommandHandler {
     handleCommand(command:Command,callback :any):void {
         let type = command.getData().param.get("type");
         let content = command.getData().param.get("content");
-        
+
         if(type === "info") {
             console.log(content);
         }

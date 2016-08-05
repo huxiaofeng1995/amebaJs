@@ -54,6 +54,7 @@ define(["require", "exports", "../runtime/Context", "./define/LogicletComponentE
             // 调用组件
             Command.call(componentElement, function (result) {
                 // 出参处理
+                console.log("执行callback：" + result.end);
                 outArgMap = componentElement.getOutArgMap();
                 if (outArgMap != undefined) {
                     var outArg = outArgMap.get("result");
@@ -62,8 +63,8 @@ define(["require", "exports", "../runtime/Context", "./define/LogicletComponentE
                     }
                 }
                 // 处理返回的执行结果
-                console.log("组件返回结果： ");
-                console.log(result);
+                console.log(currentTask.getName() + " 组件返回结果： ");
+                console.log(result.end);
                 currentTask.end(result.end);
             });
         };

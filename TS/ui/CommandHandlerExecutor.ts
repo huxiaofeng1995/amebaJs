@@ -23,7 +23,6 @@ export class CommandHandlerExecutor {
         var ctx : Context = data.context;
         let executor :CommandHandlerExecutor = ctx.get(ServiceObj.CommandHandlerExecutor);
 
-        alert("收到事件!!"+msg+"  "+data.param);
         let command = new Command(msg,data);
         executor.execute(command,data.callback);
     }
@@ -37,9 +36,7 @@ export class CommandHandlerExecutor {
     }
 
     public execute(command:Command, callback:any) {
-        alert("开始执行");
         let handler:ICommandHandler = this.handlers.get(command.getName());
-        alert("handler"+handler);
         handler.handleCommand(command, callback);
     }
 }

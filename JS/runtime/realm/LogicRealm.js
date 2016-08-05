@@ -115,6 +115,7 @@ define(["require", "exports", "../Context"], function (require, exports, Context
          * 继续执行当前任务的衍生任务以及队列里的后续任务
          */
         LogicRealm.prototype.continueExec = function () {
+            console.log("开始continue..");
             if (this.isDead()) {
                 return;
             }
@@ -134,6 +135,7 @@ define(["require", "exports", "../Context"], function (require, exports, Context
             }
             // 从已经结束的任务继续下一个任务
             var next = endTask.getNext();
+            console.log("下一个任务获取: " + next.getName());
             if (next != null) {
                 var sync = this.runDirectly(next);
                 if (!sync) {

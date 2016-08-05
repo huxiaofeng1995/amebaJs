@@ -6,7 +6,6 @@ define(["require", "exports", "./Command", "../lib/HashMap", "./commandhandlers/
             this.handleEvent = function (msg, data) {
                 var ctx = data.context;
                 var executor = ctx.get(ServiceObj_1.ServiceObj.CommandHandlerExecutor);
-                alert("收到事件!!" + msg + "  " + data.param);
                 var command = new Command_1.Command(msg, data);
                 executor.execute(command, data.callback);
             };
@@ -20,9 +19,7 @@ define(["require", "exports", "./Command", "../lib/HashMap", "./commandhandlers/
             return this.handlers.get(name);
         };
         CommandHandlerExecutor.prototype.execute = function (command, callback) {
-            alert("开始执行");
             var handler = this.handlers.get(command.getName());
-            alert("handler" + handler);
             handler.handleCommand(command, callback);
         };
         return CommandHandlerExecutor;

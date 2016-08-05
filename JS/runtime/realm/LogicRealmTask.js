@@ -73,6 +73,7 @@ define(["require", "exports", "../../lib/HashMap"], function (require, exports, 
          * 完结当前任务
          */
         LogicRealmTask.prototype.end = function (endId) {
+            console.log(this.getName() + "LRT end任务: " + endId);
             if (endId != null) {
                 this.selectedEnd = endId; // 标记结束出口
             }
@@ -84,6 +85,7 @@ define(["require", "exports", "../../lib/HashMap"], function (require, exports, 
                 this.endFlag = true;
                 // if(this.realm.isSuspended()) {  realm是否有suspended状态？？
                 // 激活下一个任务
+                console.log("contine Exec");
                 this.realm.continueExec();
             }
         };
