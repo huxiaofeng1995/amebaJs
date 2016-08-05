@@ -29,7 +29,7 @@ define(["require", "exports", "../runtime/Context", "./define/LogicletComponentE
                     var arg = inArgMap.get(inArg);
                     if (arg != undefined) {
                         var value = Context_1.Context.getCurrent().get("DefaultExpressionEngine").evaluate(arg.getContent(), pits);
-                        inArgMap.put(inArg, value);
+                        arg.setContent(value);
                     }
                 }
             }

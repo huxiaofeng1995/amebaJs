@@ -39,7 +39,7 @@ abstract class AbstractLFCProcessDefinitionAdapter implements IProcessDefinition
                 var arg = inArgMap.get(inArg);
                 if(arg != undefined) {
                     var value = Context.getCurrent().get("DefaultExpressionEngine").evaluate(arg.getContent(), pits);
-                    inArgMap.put(inArg, value);
+                    arg.setContent(value);
                 }
             }
         }

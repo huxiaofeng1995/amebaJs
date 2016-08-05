@@ -17,8 +17,8 @@ export function metadata() {
 export function execute(inArgs, resultCallback) {
     var strList, strArr, joint, end, result;
         
-    strList = inArgs.get("strList");
-    joint = inArgs.get("joint");
+    strList = inArgs.get("strList").getContent();
+    joint = inArgs.get("joint").getContent();
 
     strArr = JSON.parse(strList);
     result = strArr.join(joint);
